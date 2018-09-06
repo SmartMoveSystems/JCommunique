@@ -57,7 +57,7 @@ public abstract class Notification {
 	 * hide() doesn't invoke Manager-related things like fading, etc.
 	 */
 	public void removeFromManager() {
-		m_manager.removeNotification(this);
+		if(m_manager != null) m_manager.removeNotification(this);
 	}
 
 	protected void fireListeners(String action) {
