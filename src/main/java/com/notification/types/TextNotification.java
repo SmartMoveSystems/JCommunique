@@ -21,7 +21,7 @@ public class TextNotification extends BorderLayoutNotification {
 		m_subtitleLabel = new JLabel();
 
 		this.addComponent(m_titleLabel, BorderLayout.NORTH);
-		this.addComponent(m_subtitleLabel, BorderLayout.CENTER);
+		this.addComponent(m_subtitleLabel, BorderLayout.WEST);//this.addComponent(m_subtitleLabel, BorderLayout.CENTER);
 	}
 
 	public String getTitle() {
