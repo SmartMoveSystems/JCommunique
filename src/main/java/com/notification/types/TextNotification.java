@@ -3,7 +3,6 @@ package com.notification.types;
 import java.awt.BorderLayout;
 
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 
 import com.theme.TextTheme;
 import com.theme.WindowTheme;
