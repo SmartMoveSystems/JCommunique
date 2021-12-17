@@ -5,8 +5,7 @@ import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JPanel;
-import javax.swing.JWindow;
+import javax.swing.*;
 
 import com.notification.Notification;
 import com.theme.WindowTheme;
@@ -44,7 +43,7 @@ public abstract class WindowNotification extends Notification {
 		};
 
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		setPanel(new JPanel());
+		setPanel((new JPanel()));
 	}
 
 	protected JWindow getWindow() {
@@ -52,6 +51,8 @@ public abstract class WindowNotification extends Notification {
 	}
 
 	protected void setPanel(JPanel panel) {
+		JScrollPane scrollPane = new JScrollPane(panel);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		if (m_panel != null) {
 			m_window.remove(m_panel);
 			m_panel.removeMouseListener(m_listener);
@@ -59,7 +60,7 @@ public abstract class WindowNotification extends Notification {
 
 		m_panel = panel;
 
-		m_window.add(m_panel);
+		m_window.add(scrollPane);
 		m_panel.addMouseListener(m_listener);
 	}
 

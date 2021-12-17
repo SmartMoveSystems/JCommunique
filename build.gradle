@@ -44,7 +44,7 @@ clean {
 	delete "bin"
 }
 
-task createPom << {
+task createPom doLast  {
     pom {
         project {
             groupId 'org.jcommunique'
