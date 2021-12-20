@@ -51,8 +51,6 @@ public abstract class WindowNotification extends Notification {
 	}
 
 	protected void setPanel(JPanel panel) {
-		JScrollPane scrollPane = new JScrollPane(panel);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		if (m_panel != null) {
 			m_window.remove(m_panel);
 			m_panel.removeMouseListener(m_listener);
@@ -60,10 +58,21 @@ public abstract class WindowNotification extends Notification {
 
 		m_panel = panel;
 
-		m_window.add(scrollPane);
+		m_window.add(m_panel);
 		m_panel.addMouseListener(m_listener);
 	}
 
+	 public void setScrollBarToPanel()
+	 {
+	 	if(m_panel != null)
+		{
+			m_window.remove(m_panel);
+			JScrollPane scrollPane = new JScrollPane(m_panel);
+			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			m_window.add(scrollPane);
+		}
+	 }
 	/**
 	 * @return whether or not the Notification should close when it's clicked
 	 */
