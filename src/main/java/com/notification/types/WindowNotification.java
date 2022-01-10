@@ -5,8 +5,7 @@ import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JPanel;
-import javax.swing.JWindow;
+import javax.swing.*;
 
 import com.notification.Notification;
 import com.theme.WindowTheme;
@@ -44,7 +43,7 @@ public abstract class WindowNotification extends Notification {
 		};
 
 		setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-		setPanel(new JPanel());
+		setPanel((new JPanel()));
 	}
 
 	protected JWindow getWindow() {
@@ -63,6 +62,17 @@ public abstract class WindowNotification extends Notification {
 		m_panel.addMouseListener(m_listener);
 	}
 
+	 public void setScrollBarToPanel()
+	 {
+	 	if(m_panel != null)
+		{
+			m_window.remove(m_panel);
+			JScrollPane scrollPane = new JScrollPane(m_panel);
+			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+			m_window.add(scrollPane);
+		}
+	 }
 	/**
 	 * @return whether or not the Notification should close when it's clicked
 	 */
